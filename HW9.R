@@ -36,4 +36,27 @@ MLEs.gamma <- optim(fn = llgamma,
 gamma.alpha <- MLEs.gamma$par[1]
 gamma.sigma <- MLEs.gamma$par[2]
 
+# lognormal dist
+lllognorm <- function(par, data, neg = F){
+  # parameters
+  mean <- exp(par[1])
+  sd <- exp(par[2])
+  #mean <- par[1]
+  #sd <- par[2]
+  llognorm <- sum(log(dlnorm(x=data, meanlog = mean, sdlog = sd)),na.rm=T)
+  
+  return(ifelse(neg, -llognorm, llognorm))
+}
 
+# can i do this for lognorm?
+#par1 = mean(precipitation.long$Precipitation, na.rm =T)
+#par2 = sd(precipitation.long$Precipitation, na.rm = T)
+MLEs.lognorm <- optim(fn = lllognorm,
+                      par = c(1,1),
+                      data = precipitation.long$Precipitation,
+                      neg = T)
+(MLEs.lognorm$par <- exp(MLEs.lognorm$par)) # transform
+lognorm.mean <- MLEs.lognorm$par[1]
+lognorm.sd <- MLEs.lognorm$par[2]
+
+# compare to weibull 
