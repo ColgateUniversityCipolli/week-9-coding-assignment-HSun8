@@ -118,5 +118,6 @@ partd.ratio <- exp(weibull.ll - lognorm.ll)
 # q3 > 1, so the gamma distribution has a better fit 
 parte.ratio <- exp(gamma.ll - lognorm.ll)
 
-# if you look at the graph, it makes more
-
+# if you look at the graph, it makes more sense
+# weibull seems to underestimate a bit 
+# lognorm seems to overestimate a bit 
