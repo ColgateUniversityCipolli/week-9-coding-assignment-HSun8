@@ -170,12 +170,12 @@ which \texttt{R} cannot differentiate from 0.
   \begin{enumerate}
     \item Compute the MLEs for this data using a Gamma distribution. \\
     \textbf{Solution:} The MLEs for the data using a Gamma distribution are: 
-    \[\hat{\alpha} = \Sexpr{gamma.alpha}\]
-    \[\hat{\beta} = \Sexpr{gamma.sigma}.\]
+    \[\hat{\alpha} = \Sexpr{round(gamma.alpha,4)}\]
+    \[\hat{\beta} = \Sexpr{round(gamma.sigma, 4)}.\]
     \item Compute the MLEs for these data using the Log-Normal distribution. \\
     \textbf{Solution:} The MLEs for this data using a Log-Normal distribution are:
-    \[\hat{\mu} = \Sexpr{lognorm.mu}\]
-    \[\hat{\sigma} = \Sexpr{lognorm.sigma}.\]
+    \[\hat{\mu} = \Sexpr{round(lognorm.mu, 4)}\]
+    \[\hat{\sigma} = \Sexpr{round(lognorm.sigma, 4)}.\]
     \item Compute the likelihood ratio to compare the Weibull and the Gamma distribution. 
     Which has a better fit according to the likelihood ratio?
     \[Q = \frac{L(\{\hat{a}, \hat{\sigma}\}|\mathbf{x})}{L(\{\hat{\alpha}, \hat{\beta}\}|\mathbf{x})}=e^{\left[\mathcal{L}(\{\hat{a}, \hat{\sigma}\}|\mathbf{x}) - \mathcal{L}(\{\hat{\alpha}, \hat{\beta}\}|\mathbf{x})\right]}\] 
