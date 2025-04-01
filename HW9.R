@@ -31,7 +31,7 @@ MLEs.gamma <- optim(fn = llgamma,
                     par = c(1,1),
                     data = precipitation.long$Precipitation,
                     neg = T)
-(MLEs.gamma$par <- exp(MLEs.gamma$par)) # transform
+MLEs.gamma$par <- exp(MLEs.gamma$par) # transform
 
 gamma.alpha <- MLEs.gamma$par[1]
 gamma.sigma <- MLEs.gamma$par[2]
@@ -55,7 +55,7 @@ MLEs.lognorm <- optim(fn = lllognorm,
                       par = c(1,1),
                       data = precipitation.long$Precipitation,
                       neg = T)
-(MLEs.lognorm$par <- exp(MLEs.lognorm$par)) # transform
+MLEs.lognorm$par <- exp(MLEs.lognorm$par) # transform
 lognorm.mu <- MLEs.lognorm$par[1]
 lognorm.sigma <- MLEs.lognorm$par[2]
 
@@ -75,7 +75,7 @@ MLEs.weibull <- optim(fn = llweibull,
                       data = precipitation.long$Precipitation,
                       neg=T)
 
-(MLEs.weibull$par <- exp(MLEs.weibull$par)) # transform
+MLEs.weibull$par <- exp(MLEs.weibull$par) # transform
 weibull.alpha <- MLEs.weibull$par[1]
 weibull.sigma <- MLEs.weibull$par[2]
 
@@ -86,7 +86,7 @@ pdfs <- tibble(x = seq(0,13,length.out=1000)) |>
          weibull.pdf = dweibull(x=x, shape = weibull.alpha, scale = weibull.sigma))
 
 # good enough...
-ggplot() +
+pdf.plots <- ggplot() +
   geom_histogram(data=precipitation.long,
                  aes(x=Precipitation, y=after_stat(density)),
                  breaks = seq(0,13,1)) +
